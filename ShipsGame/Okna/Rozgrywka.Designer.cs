@@ -1,7 +1,7 @@
 ﻿
 namespace ShipsGame.Okna
 {
-    partial class UstawienieStatkow
+    partial class Rozgrywka
     {
         /// <summary>
         /// Required designer variable.
@@ -29,33 +29,12 @@ namespace ShipsGame.Okna
         /// </summary>
         private void InitializeComponent()
         {
-            this.planszaGracza = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.planszaGracza)).BeginInit();
-            this.SuspendLayout();
-            // 
-            // planszaGracza
-            // 
-            this.planszaGracza.Location = new System.Drawing.Point(54, 12);
-            this.planszaGracza.Name = "planszaGracza";
-            this.planszaGracza.Size = new System.Drawing.Size(400, 400);
-            this.planszaGracza.TabIndex = 0;
-            this.planszaGracza.TabStop = false;
-            // 
-            // UstawienieStatkow
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.planszaGracza);
-            this.Name = "UstawienieStatkow";
-            this.Text = "UstawienieStatkow";
-            ((System.ComponentModel.ISupportInitialize)(this.planszaGracza)).EndInit();
-            this.ResumeLayout(false);
-
+            this.Text = "Rozgrywka";
         }
 
         #endregion
-
-        private System.Windows.Forms.PictureBox planszaGracza;
     }
 }
