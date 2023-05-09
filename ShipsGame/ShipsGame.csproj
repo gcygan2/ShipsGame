@@ -64,6 +64,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Klasy\Rysowanie.cs" />
+    <EmbeddedResource Include="Okna\Rozgrywka.resx">
+      <DependentUpon>Rozgrywka.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Okna\UstawienieStatkow.resx">
       <DependentUpon>UstawienieStatkow.cs</DependentUpon>
     </EmbeddedResource>

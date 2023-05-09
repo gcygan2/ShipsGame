@@ -30,32 +30,97 @@ namespace ShipsGame.Okna
         private void InitializeComponent()
         {
             this.planszaGracza = new System.Windows.Forms.PictureBox();
+            this.txtNazwaGracza = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblNazwaGracza = new System.Windows.Forms.Label();
+            this.btnObrot = new System.Windows.Forms.Button();
+            this.btnDalej = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.planszaGracza)).BeginInit();
             this.SuspendLayout();
             // 
             // planszaGracza
             // 
-            this.planszaGracza.Location = new System.Drawing.Point(54, 12);
+            this.planszaGracza.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.planszaGracza.Image = global::ShipsGame.Properties.Resources.board;
+            this.planszaGracza.Location = new System.Drawing.Point(72, 15);
+            this.planszaGracza.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.planszaGracza.Name = "planszaGracza";
             this.planszaGracza.Size = new System.Drawing.Size(400, 400);
+            this.planszaGracza.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.planszaGracza.TabIndex = 0;
             this.planszaGracza.TabStop = false;
             // 
+            // txtNazwaGracza
+            // 
+            this.txtNazwaGracza.Location = new System.Drawing.Point(606, 139);
+            this.txtNazwaGracza.Name = "txtNazwaGracza";
+            this.txtNazwaGracza.Size = new System.Drawing.Size(100, 22);
+            this.txtNazwaGracza.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(606, 97);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(46, 17);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Gracz";
+            // 
+            // lblNazwaGracza
+            // 
+            this.lblNazwaGracza.AutoSize = true;
+            this.lblNazwaGracza.ForeColor = System.Drawing.Color.Red;
+            this.lblNazwaGracza.Location = new System.Drawing.Point(606, 182);
+            this.lblNazwaGracza.Name = "lblNazwaGracza";
+            this.lblNazwaGracza.Size = new System.Drawing.Size(127, 17);
+            this.lblNazwaGracza.TabIndex = 3;
+            this.lblNazwaGracza.Text = "Podaj swoją nazwę";
+            // 
+            // btnObrot
+            // 
+            this.btnObrot.Location = new System.Drawing.Point(609, 234);
+            this.btnObrot.Name = "btnObrot";
+            this.btnObrot.Size = new System.Drawing.Size(75, 23);
+            this.btnObrot.TabIndex = 4;
+            this.btnObrot.Text = "Obróć";
+            this.btnObrot.UseVisualStyleBackColor = true;
+            // 
+            // btnDalej
+            // 
+            this.btnDalej.Location = new System.Drawing.Point(606, 285);
+            this.btnDalej.Name = "btnDalej";
+            this.btnDalej.Size = new System.Drawing.Size(75, 23);
+            this.btnDalej.TabIndex = 5;
+            this.btnDalej.Text = "Dalej";
+            this.btnDalej.UseVisualStyleBackColor = true;
+            // 
             // UstawienieStatkow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.Controls.Add(this.btnDalej);
+            this.Controls.Add(this.btnObrot);
+            this.Controls.Add(this.lblNazwaGracza);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtNazwaGracza);
             this.Controls.Add(this.planszaGracza);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "UstawienieStatkow";
             this.Text = "UstawienieStatkow";
             ((System.ComponentModel.ISupportInitialize)(this.planszaGracza)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.PictureBox planszaGracza;
+        private System.Windows.Forms.TextBox txtNazwaGracza;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblNazwaGracza;
+        private System.Windows.Forms.Button btnObrot;
+        private System.Windows.Forms.Button btnDalej;
     }
 }
