@@ -48,6 +48,7 @@ namespace ShipsGame.Okna
             this.planszaGracza.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.planszaGracza.TabIndex = 0;
             this.planszaGracza.TabStop = false;
+            this.planszaGracza.MouseMove += new System.Windows.Forms.MouseEventHandler(this.planszaGracza_MouseMove);
             // 
             // txtNazwaGracza
             // 
@@ -83,17 +84,18 @@ namespace ShipsGame.Okna
             this.btnObrot.Location = new System.Drawing.Point(457, 190);
             this.btnObrot.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnObrot.Name = "btnObrot";
-            this.btnObrot.Size = new System.Drawing.Size(56, 19);
+            this.btnObrot.Size = new System.Drawing.Size(104, 27);
             this.btnObrot.TabIndex = 4;
             this.btnObrot.Text = "Obróć";
             this.btnObrot.UseVisualStyleBackColor = true;
+            this.btnObrot.Click += new System.EventHandler(this.btnObrot_Click);
             // 
             // btnDalej
             // 
             this.btnDalej.Location = new System.Drawing.Point(454, 232);
             this.btnDalej.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnDalej.Name = "btnDalej";
-            this.btnDalej.Size = new System.Drawing.Size(56, 19);
+            this.btnDalej.Size = new System.Drawing.Size(107, 27);
             this.btnDalej.TabIndex = 5;
             this.btnDalej.Text = "Dalej";
             this.btnDalej.UseVisualStyleBackColor = true;

@@ -57,9 +57,11 @@
     </Compile>
     <Compile Include="Okna\UstawienieStatkow.cs">
       <SubType>Form</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Okna\UstawienieStatkow.Designer.cs">
       <DependentUpon>UstawienieStatkow.cs</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -69,6 +71,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Okna\UstawienieStatkow.resx">
       <DependentUpon>UstawienieStatkow.cs</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
