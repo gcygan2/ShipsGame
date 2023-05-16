@@ -48,12 +48,14 @@ namespace ShipsGame.Okna
             this.planszaGracza.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.planszaGracza.TabIndex = 0;
             this.planszaGracza.TabStop = false;
+            this.planszaGracza.Click += new System.EventHandler(this.planszaGracza_Click);
+            this.planszaGracza.Paint += new System.Windows.Forms.PaintEventHandler(this.planszaGracza_Paint);
             this.planszaGracza.MouseMove += new System.Windows.Forms.MouseEventHandler(this.planszaGracza_MouseMove);
             // 
             // txtNazwaGracza
             // 
             this.txtNazwaGracza.Location = new System.Drawing.Point(454, 113);
-            this.txtNazwaGracza.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNazwaGracza.Margin = new System.Windows.Forms.Padding(2);
             this.txtNazwaGracza.Name = "txtNazwaGracza";
             this.txtNazwaGracza.Size = new System.Drawing.Size(107, 20);
             this.txtNazwaGracza.TabIndex = 1;
@@ -82,7 +84,7 @@ namespace ShipsGame.Okna
             // btnObrot
             // 
             this.btnObrot.Location = new System.Drawing.Point(457, 190);
-            this.btnObrot.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnObrot.Margin = new System.Windows.Forms.Padding(2);
             this.btnObrot.Name = "btnObrot";
             this.btnObrot.Size = new System.Drawing.Size(104, 27);
             this.btnObrot.TabIndex = 4;
@@ -93,7 +95,7 @@ namespace ShipsGame.Okna
             // btnDalej
             // 
             this.btnDalej.Location = new System.Drawing.Point(454, 232);
-            this.btnDalej.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDalej.Margin = new System.Windows.Forms.Padding(2);
             this.btnDalej.Name = "btnDalej";
             this.btnDalej.Size = new System.Drawing.Size(107, 27);
             this.btnDalej.TabIndex = 5;

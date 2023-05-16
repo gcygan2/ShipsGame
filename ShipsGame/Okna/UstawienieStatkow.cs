@@ -29,7 +29,7 @@ namespace ShipsGame.Okna
             poziom = true;
             Gra.Uzytkownik = new Gracz();
             Gra.Komputer = new Gracz();
-            indexAktualnegoStatku = 3;
+            indexAktualnegoStatku = 0;
             lblNazwaGracza.Visible = false;
             btnDalej.Enabled = false;
         }
@@ -75,6 +75,27 @@ namespace ShipsGame.Okna
                     }
                 }
             }
+        }
+
+        private void planszaGracza_Click(object sender, EventArgs e)
+        {
+            if (Gra.CzyMoznaPostawicStatek(indexAktualnegoStatku, myszX, myszY, poziom, Gra.Uzytkownik.Plansza))
+            {
+                rozmieszczoneStatki[indexAktualnegoStatku] = true;
+                Gra.RozmiescStatek(indexAktualnegoStatku, myszX, myszY, poziom, Gra.Uzytkownik.Plansza);
+                planszaGracza.Refresh();
+                if (indexAktualnegoStatku < Gra.RozmiaryStatkow.Length)
+                {
+                    indexAktualnegoStatku++;
+                }
+                
+            }
+
+        }
+
+        private void planszaGracza_Paint(object sender, PaintEventArgs e)
+        {
+            Rysowanie.RysujUstawioneKomorki(Gra.Uzytkownik.Plansza, e);
         }
     }
 }

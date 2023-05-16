@@ -16,7 +16,7 @@ namespace ShipsGame.Klasy
         public static Gracz Uzytkownik;
         public static Gracz Komputer;
         public static int[] RozmiaryStatkow = new int[4] { 1, 2, 3, 4 };
-        /*public static bool CzyMoznaPostawicStatek(int indexAktualnegoStatku, int komorkaX, int komorkaY, bool jestHoryzontalnie, int[,] komorki)
+        public static bool CzyMoznaPostawicStatek(int indexAktualnegoStatku, int komorkaX, int komorkaY, bool jestHoryzontalnie, int[,] komorki)
         {
             if (jestHoryzontalnie)
             {
@@ -61,11 +61,24 @@ namespace ShipsGame.Klasy
                     return false;
                 }
             }
-        }*/
+        }
 
         public static void RozmiescStatek(int indexAktualnegoStatku, int komorkaX, int komorkaY, bool jestHoryzontalnie, int[,] komorki)
         {
-            
+            if (jestHoryzontalnie)
+            {
+                for (int i = 0; i < RozmiaryStatkow[indexAktualnegoStatku]; i++)
+                {
+                    komorki[komorkaX + i, komorkaY] = indexAktualnegoStatku;
+                }
+            }
+            else
+            {
+                for (int i = 0; i < RozmiaryStatkow[indexAktualnegoStatku]; i++)
+                {
+                    komorki[komorkaX, komorkaY + i] = indexAktualnegoStatku;
+                }
+            }
         }
 
         /*public static void RozmieszczenieStatkowKomputera()
