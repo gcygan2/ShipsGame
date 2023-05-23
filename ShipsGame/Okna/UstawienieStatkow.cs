@@ -87,6 +87,12 @@ namespace ShipsGame.Okna
                 if (indexAktualnegoStatku < Gra.RozmiaryStatkow.Length)
                 {
                     indexAktualnegoStatku++;
+                    int pos = Array.IndexOf(rozmieszczoneStatki, false);
+                    if (pos == -1)
+                    {
+                        btnDalej.Enabled = true;
+                        planszaGracza.Enabled = false;
+                    }
                 }
                 
             }
@@ -96,6 +102,23 @@ namespace ShipsGame.Okna
         private void planszaGracza_Paint(object sender, PaintEventArgs e)
         {
             Rysowanie.RysujUstawioneKomorki(Gra.Uzytkownik.Plansza, e);
+        }
+
+        private void btnDalej_Click(object sender, EventArgs e)
+        {
+            if (txtNazwaGracza.Text == "")
+            {
+                lblNazwaGracza.Visible = true;
+            }
+            else
+            {
+                Gra.Uzytkownik.Nazwa = txtNazwaGracza.Text;
+                Gra.Komputer.Nazwa = "bot";
+                Gra.RozmieszczenieStatkowKomputera();
+                Hide();
+                Rozgrywka rozgrywka = new Rozgrywka();
+                rozgrywka.Show();
+            }
         }
     }
 }

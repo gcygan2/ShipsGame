@@ -81,7 +81,7 @@ namespace ShipsGame.Klasy
             }
         }
 
-        /*public static void RozmieszczenieStatkowKomputera()
+        public static void RozmieszczenieStatkowKomputera()
         {
             Random random = new Random();
             int indexAktualnegoStatku = 0;
@@ -97,7 +97,7 @@ namespace ShipsGame.Klasy
                     indexAktualnegoStatku++;
                 }
             }
-        }*/
+        }
 
         /*public static bool WykonajAtak(int komorkaX, int komorkaY, Gracz atakujacy, Gracz atakowany)
         {

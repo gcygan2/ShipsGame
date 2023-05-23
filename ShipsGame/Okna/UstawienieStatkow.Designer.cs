@@ -101,6 +101,7 @@ namespace ShipsGame.Okna
             this.btnDalej.TabIndex = 5;
             this.btnDalej.Text = "Dalej";
             this.btnDalej.UseVisualStyleBackColor = true;
+            this.btnDalej.Click += new System.EventHandler(this.btnDalej_Click);
             // 
             // UstawienieStatkow
             // 
