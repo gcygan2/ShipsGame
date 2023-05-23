@@ -29,5 +29,26 @@ namespace ShipsGame.Okna
             planczaKomputera.Refresh();
             Rysowanie.RysujObramowanie(myszX, myszY, 4, planczaKomputera);
         }
+
+        private void planszaGracza_Paint(object sender, PaintEventArgs w)
+        {
+            Rysowanie.RysujUstawioneKomorki(Gra.Uzytkownik.Plansza, w);
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            int[] strzalKomputera = Gra.StrzalKomputera(Gra.Uzytkownik);
+            if (!Gra.WykonajAtak(strzalKomputera[0], strzalKomputera[1], Gra.Komputer, Gra.Uzytkownik))
+            {
+                timer1.Stop();
+                planczaKomputera.Click += planczaKomputera_Click;
+            }
+            planszaGracza.Refresh();
+        }
+
+        private void planczaKomputera_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -29,8 +29,10 @@ namespace ShipsGame.Okna
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.planczaKomputera = new System.Windows.Forms.PictureBox();
             this.planszaGracza = new System.Windows.Forms.PictureBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.planczaKomputera)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.planszaGracza)).BeginInit();
             this.SuspendLayout();
@@ -45,6 +47,7 @@ namespace ShipsGame.Okna
             this.planczaKomputera.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.planczaKomputera.TabIndex = 0;
             this.planczaKomputera.TabStop = false;
+            this.planczaKomputera.Click += new System.EventHandler(this.planczaKomputera_Click);
             this.planczaKomputera.MouseMove += new System.Windows.Forms.MouseEventHandler(this.planczaKomputera_MouseMove);
             // 
             // planszaGracza
@@ -57,6 +60,12 @@ namespace ShipsGame.Okna
             this.planszaGracza.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.planszaGracza.TabIndex = 1;
             this.planszaGracza.TabStop = false;
+            this.planszaGracza.Paint += new System.Windows.Forms.PaintEventHandler(this.planszaGracza_Paint);
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Rozgrywka
             // 
@@ -78,5 +87,6 @@ namespace ShipsGame.Okna
 
         private System.Windows.Forms.PictureBox planczaKomputera;
         private System.Windows.Forms.PictureBox planszaGracza;
+        private System.Windows.Forms.Timer timer1;
     }
 }
