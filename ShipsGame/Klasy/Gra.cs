@@ -15,7 +15,9 @@ namespace ShipsGame.Klasy
     {
         public static Gracz Uzytkownik;
         public static Gracz Komputer;
+
         public static int[] RozmiaryStatkow = new int[4] { 1, 2, 3, 4 };
+
         public static bool CzyMoznaPostawicStatek(int indexAktualnegoStatku, int komorkaX, int komorkaY, bool jestHoryzontalnie, int[,] komorki)
         {
             if (jestHoryzontalnie)
@@ -85,12 +87,17 @@ namespace ShipsGame.Klasy
         {
             Random random = new Random();
             int indexAktualnegoStatku = 0;
-
+            // wywołujemy pętlę dla wszystkich statków
             while (indexAktualnegoStatku < RozmiaryStatkow.Length)
             {
                 int x = random.Next(Gracz.ROZMIAR_PLANSZY);
                 int y = random.Next(Gracz.ROZMIAR_PLANSZY);
 
+                // sprawdzamy czy komputer
+                // może postawic statek w wylosowanych współrzędnych
+                // dla uproszczenia ustalamy, że komputer
+                // może umieszczać statki tylko poziomo
+                // (parametr dotyczący obrotu ma wartość true)
                 if (CzyMoznaPostawicStatek(indexAktualnegoStatku, x, y, true, Komputer.Plansza))
                 {
                     RozmiescStatek(indexAktualnegoStatku, x, y, true, Gra.Komputer.Plansza);
@@ -101,19 +108,27 @@ namespace ShipsGame.Klasy
 
         public static bool WykonajAtak(int komorkaX, int komorkaY, Gracz atakujacy, Gracz atakowany)
         {
+            // wskazane pole zostaje ustawione na odkryte
             atakowany.OdkrytePola[komorkaX, komorkaY] = true;
 
+            // sprawdzenie, czy komórka jest komórką statku przeciwnika (nie była pusta)
+            // czyli gracz trafił w komórkę statku
             if (atakowany.Plansza[komorkaX, komorkaY] != -1)
             {
+                // zmniejszenie wartości tablicy dla trafionego statku przeciwnika
                 atakowany.Flota[atakowany.Plansza[komorkaX, komorkaY]]--;
 
+                // jeśli trafiono wszystkie komórki danego statku przeciwnika
+                // czyli wartość jest równa 0
                 if (atakowany.Flota[atakowany.Plansza[komorkaX, komorkaY]] == 0)
                 {
+                    // zmniejszamy liczbę statków do trafienia
                     atakujacy.LiczbaStatkowDoZatopienia--;
                 }
 
                 return true;
             }
+            // jeśli atakujący nie trafił w statek (czyli pudło)
             else
             {
                 return false;
@@ -123,20 +138,25 @@ namespace ShipsGame.Klasy
         public static int[] StrzalKomputera(Gracz gracz)
         {
 
+            // utworzenie obiektu losującego
             Random random = new Random();
 
+            // losowanie współrzędnych
             int x = random.Next(Gracz.ROZMIAR_PLANSZY);
             int y = random.Next(Gracz.ROZMIAR_PLANSZY);
 
+            // dopóki nie wylosowano współrzędnych nieodkrytej komórki
+            // to losuj dalej współrzędne
             while (gracz.OdkrytePola[x, y] == true)
             {
                 x = random.Next(Gracz.ROZMIAR_PLANSZY);
                 y = random.Next(Gracz.ROZMIAR_PLANSZY);
             }
 
+            // przypisanie współrzędnych do pomocniczej tablicy
+            // i jej zwrócenie przez metodę
             int[] strzal = { x, y };
             return strzal;
         }
-
     }
 }

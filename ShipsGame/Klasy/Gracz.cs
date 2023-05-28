@@ -18,8 +18,10 @@ namespace ShipsGame.Klasy
         // zestaw statków gracza
         public int[] Flota;
         public int LiczbaStatkowDoZatopienia;
+
         public static int ROZMIAR_PLANSZY = 10;
         public static int OSTATNI_INDEX_PLANSZY = ROZMIAR_PLANSZY - 1;
+
         public Gracz()
         {
             // ustawiono cztery statki od 1-4 pól
@@ -29,6 +31,8 @@ namespace ShipsGame.Klasy
             OdkrytePola = new bool[ROZMIAR_PLANSZY, ROZMIAR_PLANSZY];
             // liczba statków do zatopienia
             LiczbaStatkowDoZatopienia = Flota.Length;
+
+
             for (int i = 0; i < ROZMIAR_PLANSZY; i++)
             {
                 for (int j = 0; j < ROZMIAR_PLANSZY; j++)
@@ -40,5 +44,6 @@ namespace ShipsGame.Klasy
                 }
             }
         }
+
     }
 }

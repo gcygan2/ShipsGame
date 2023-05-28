@@ -13,43 +13,58 @@ namespace ShipsGame.Okna
 {
     public partial class UstawienieStatkow : Form
     {
-        //współrzędne myszy
+        // współrzędne myszy
         int myszX;
         int myszY;
-        //indeks do tablicy z długością statków
+
+        // indeks do tablicy z długością statków
         int indexAktualnegoStatku;
-        //poziomo = true, pionowo = false
+
+        // pole wskazujące na układ statku: true - poziomo; false - pionowo
         bool poziom;
+
+        // informacja czy dany statek jest rozmieszczony
         bool[] rozmieszczoneStatki = new bool[4];
+
         public UstawienieStatkow()
         {
             InitializeComponent();
+
+            // upewnienie się że skalowanie nie wpływa na rozmiar
             planszaGracza.Width = 400;
             planszaGracza.Height = 400;
+
             poziom = true;
+
             Gra.Uzytkownik = new Gracz();
             Gra.Komputer = new Gracz();
+
+            // index o wartości 0 wskazywać będzie na pierwszy statek do rozmieszczenia
             indexAktualnegoStatku = 0;
+
             lblNazwaGracza.Visible = false;
             btnDalej.Enabled = false;
-        }
 
-        private void btnObrot_Click(object sender, EventArgs e)
-        {
-            poziom = !poziom;
         }
 
         private void planszaGracza_MouseMove(object sender, MouseEventArgs e)
         {
-            if (indexAktualnegoStatku < rozmieszczoneStatki.Length)
+            // zdarzenie będzie wywoływane dopóki wszystkie statki nie będą rozłożone (indeksy od 0 do 3)
+            if (indexAktualnegoStatku < 4)
             {
+                // ustawiamy współrzędne kursora myszy
                 myszX = Koordynaty.PobierzKomorke(e.Location.X);
                 myszY = Koordynaty.PobierzKomorke(e.Location.Y);
+
+                // odświeżenie planszy gracza
                 planszaGracza.Refresh();
+
+                // jeśli statek ustawiony jest poziomo
                 if (poziom)
                 {
                     for (int i = 0; i < Gra.RozmiaryStatkow[indexAktualnegoStatku]; i++)
                     {
+                        // musimy mieć pewność, że statek nie wyjdzie nam poza planszę
                         if (myszX + i <= Gracz.OSTATNI_INDEX_PLANSZY)
                         {
                             Rysowanie.RysujObramowanie(myszX + i, myszY, indexAktualnegoStatku, planszaGracza);
@@ -60,10 +75,12 @@ namespace ShipsGame.Okna
                         }
                     }
                 }
+                // poziom = false, czyli statek ustawiony będzie pionowo
                 else
                 {
                     for (int i = 0; i < Gra.RozmiaryStatkow[indexAktualnegoStatku]; i++)
                     {
+                        // musimy mieć pewność, że statek nie wyjdzie nam poza planszę
                         if (myszY + i <= Gracz.OSTATNI_INDEX_PLANSZY)
                         {
                             Rysowanie.RysujObramowanie(myszX, myszY + i, indexAktualnegoStatku, planszaGracza);
@@ -77,26 +94,41 @@ namespace ShipsGame.Okna
             }
         }
 
+        private void btnObrot_Click(object sender, EventArgs e)
+        {
+            poziom = !poziom;
+        }
+
         private void planszaGracza_Click(object sender, EventArgs e)
         {
+            // sprawdzamy czy można umieścić statek w wybranym polu planszy
             if (Gra.CzyMoznaPostawicStatek(indexAktualnegoStatku, myszX, myszY, poziom, Gra.Uzytkownik.Plansza))
             {
+                // jeśli można postawić statek to ustawiamy dane pole tablicy na true
                 rozmieszczoneStatki[indexAktualnegoStatku] = true;
+
+                // umieszczenie statku na planszy
                 Gra.RozmiescStatek(indexAktualnegoStatku, myszX, myszY, poziom, Gra.Uzytkownik.Plansza);
+
+                // odświeżenie planszy gracza
                 planszaGracza.Refresh();
+
+                // zwiększenie indeksu
                 if (indexAktualnegoStatku < Gra.RozmiaryStatkow.Length)
                 {
                     indexAktualnegoStatku++;
-                    int pos = Array.IndexOf(rozmieszczoneStatki, false);
-                    if (pos == -1)
-                    {
-                        btnDalej.Enabled = true;
-                        planszaGracza.Enabled = false;
-                    }
                 }
-                
-            }
 
+                // jeśli wszystkie statki zostały rozstawione,
+                // to odblokowany zostanie przycisk Dalej
+                // a zablokowana plansza gracza
+                int pos = Array.IndexOf(rozmieszczoneStatki, false);
+                if (pos == -1)
+                {
+                    btnDalej.Enabled = true;
+                    planszaGracza.Enabled = false;
+                }
+            }
         }
 
         private void planszaGracza_Paint(object sender, PaintEventArgs e)
@@ -106,18 +138,27 @@ namespace ShipsGame.Okna
 
         private void btnDalej_Click(object sender, EventArgs e)
         {
+            // sprawdzamy, czy pole tekstowe z nazwą gracza jest puste
             if (txtNazwaGracza.Text == "")
             {
+                // wyświetlenie komunikatu
                 lblNazwaGracza.Visible = true;
             }
             else
             {
                 Gra.Uzytkownik.Nazwa = txtNazwaGracza.Text;
-                Gra.Komputer.Nazwa = "bot";
+                Gra.Komputer.Nazwa = "Komputer";
+
                 Gra.RozmieszczenieStatkowKomputera();
-                Hide();
+
+                // utworzenie obiektu okna Rozgrywka
                 Rozgrywka rozgrywka = new Rozgrywka();
+
+                // wyświetlenie nowego okna
                 rozgrywka.Show();
+
+                // ukrycie okna UstawienieStatkow
+                Hide();
             }
         }
     }
